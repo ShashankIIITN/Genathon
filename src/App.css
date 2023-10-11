@@ -1,16 +1,44 @@
 .App {
   text-align: center;
+  height: 100%;
+  width: 100%;
+}
+body, html{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+#root{
+  height: 100%;
+  padding: 2px;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+/* .input-group{
+  pos;
+} */
+.chatMenu{
+  border: 2px solid black;
+  padding-top: 10px;
+  height: 80%;
+  overflow-y: auto;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+.tab-content{
+  border: 2px solid black;
+  width: 100%;
+  height: 100%;
+}
+.nav-pills{
+  width: 25%;
 }
 
 .App-header {
