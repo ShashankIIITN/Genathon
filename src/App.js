@@ -53,7 +53,7 @@ function App() {
     }, []);
 
     
-    const navdata = {
+    const navdata = {   
     name: "ChatBot",
   }
   const URL = "http://localhost:5000/"
