@@ -61,7 +61,7 @@ function Tabs(props) {
             <div className="tab-pane fade  h-100 w-100 show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabIndex="0"><TabContent /></div>
             {tabData && tabData.map((e,ind) => {
                 
-                   return tabData && <div className={`tab-pane fade  h-100 w-100 ${activeTab === e.Tab ? "show active " : ""}`} id={`v-pills-${e.Tab.toLowerCase()}`} key={`v-pills-${e.Tab.toLowerCase()}`} role="tabpanel" aria-labelledby={`v-pills-${e.Tab.toLowerCase()}-tab`} tabIndex="0"><TabContent data={e.TabContent}/> {e.Tab}</div>
+                   return tabData && <div className={`tab-pane fade  h-100 w-100 ${activeTab === e.Tab ? "show active " : ""}`} id={`v-pills-${e.Tab.toLowerCase()}`} key={`v-pills-${e.Tab.toLowerCase()}`} role="tabpanel" aria-labelledby={`v-pills-${e.Tab.toLowerCase()}-tab`} tabIndex="0"><TabContent data={e.TabContent}/></div>
                 })}
                 { 
                /* <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabIndex="0">2</div>

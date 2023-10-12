@@ -13,13 +13,76 @@ body, html{
   padding: 2px;
 }
 
+.tab-pane{
+  background-color: #818181;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-/* .input-group{
-  pos;
-} */
+.chatMenu {
+  background-color: rgb(193, 198, 198);
+}
+
+
+.layout{
+  display:flex;
+  flex-direction: column;
+  /* margin: 10px 0px 10px 0px; */
+}
+
+.mee {
+  /* position: relative; */
+  text-align: justify;
+  padding: 3px;
+  border-radius: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  margin: 0px 20px 0px 300px;
+  background: rgb(87, 167, 241);
+  width: fit-content;
+  margin-top: 10px;
+  
+}
+
+.sender{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.bott{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.person{
+  /* position:relative; */
+  float: left;
+  width: 53px;
+  padding-top: 5px;
+  border-radius: 50%;
+  padding-right:10px;
+  padding-left: 10px;
+}
+
+.asking{
+  padding-left: 150px;
+  padding-right: 80px;
+}
+
+.text-secondary{
+  text-align: justify;
+  padding: 3px;
+  margin: 0px 300px 0px 20px;
+  border-radius: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  background: rgb(69, 250, 93);
+  width: fit-content;
+  margin-top: 10px;
+}
 .chatMenu{
   border: 2px solid black;
   padding-top: 10px;
