@@ -58,7 +58,7 @@ function Tabs(props) {
                 <button className="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button> */}
             </div>
             <div className="tab-content d-flex" id="v-pills-tabContent">
-            <div className="tab-pane fade  h-100 w-100 show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabIndex="0"><TabContent /></div>
+            <div className="tab-pane fade  h-100 w-100 show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabIndex="0"><TabContent data = {[]}/></div>
             {tabData && tabData.map((e,ind) => {
                 
                    return tabData && <div className={`tab-pane fade  h-100 w-100 ${activeTab === e.Tab ? "show active " : ""}`} id={`v-pills-${e.Tab.toLowerCase()}`} key={`v-pills-${e.Tab.toLowerCase()}`} role="tabpanel" aria-labelledby={`v-pills-${e.Tab.toLowerCase()}-tab`} tabIndex="0"><TabContent data={e.TabContent}/></div>

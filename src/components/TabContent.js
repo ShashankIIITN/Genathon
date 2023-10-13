@@ -1,13 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import myImage from '../images/person.jpg'
 import myImage2 from '../images/bott.jpg'
+import NewContext from '../context/NewContext'
 
 function TabContent(props) {
+    const Context = useContext(NewContext)
+    const reff = useRef(null)
     const [chatData, setchatData] = useState([])
+    const [query, setquery] = useState("")
     useEffect(() => {
         setchatData(props.data)
 
-    }, [chatData])
+    }, [])
+
+    const AskHandler = async (e) => {
+        let ques = reff.current.value;
+        console.log(ques)
+        if (ques.trim() === "") {
+            alert("pls ask something!");
+        } else {
+            let qry = {}
+            let res = await Context.AskQuery(ques)
+            qry.me = ques
+
+            // let str = ""
+
+            // res.map((e) => {
+            //     if (e.text != null)
+            //         str += `<div id = 'newline' >${e.text}</div>`;
+            // })
+            qry.bot = res
+
+            // chatlist.push(qry)
+
+
+
+            setchatData([...chatData, qry])
+            console.log(chatData)
+        }
+
+    }
 
     console.log("get")
 
@@ -19,17 +51,19 @@ function TabContent(props) {
                         return (
                             <div className='message-container' >
                                 <div className='layout'>
-
-                                    <div className='bott'>
-                                        <img src={myImage2} className='person' alt="My Image2" />
-                                        <p className=' text-secondary h4'>{e.bot}</p>
-                                    </div>
-
                                     <div className='sender'>
                                         <img src={myImage} className='person' alt="My Image" />
                                         <p className='mee text-success h4'>{e.me}</p>
                                     </div>
-
+                                    <div className='bott'>
+                                        <img src={myImage2} className='person' alt="My Image2" />
+                                        {typeof e.bot == "Array" && e.bot.map(e=>{
+                                            if(e.text == null)
+                                                return <img src={e.image} className=' text-secondary h4 w-25'>{e.bot}</img>
+                                            else return <p className=' text-secondary h4'>{e.bot}</p>
+                                        })}
+                                        {console.log(e.bot)}
+                                    </div>
                                 </div>
                             </div>
                         );
@@ -41,8 +75,8 @@ function TabContent(props) {
                 <button type="button" class="btn btn-success" id="button-addon2">Ask</button>
             </div> */}
             <div class="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
-                <input type="text" class="form-control" placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                <button class="btn btn-success" type="button" id="button-addon2">Button</button>
+                <input type="text" class="form-control" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <button class="btn btn-success" type="button" id="button-addon2" onClick={AskHandler}>Button</button>
             </div>
         </>
     )

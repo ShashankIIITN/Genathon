@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NewContext from './NewContext'
+import { json } from 'react-router-dom';
 
 const DataContext = (props) => {
     /*const Tabs =
@@ -45,7 +46,7 @@ const DataContext = (props) => {
     const [Tabs, setTabs] = useState(null);
     const [SelectedTabs, setSelectedTabs] = useState(null);
     const [SelectedList, setSelectedList] = useState([]);
-    const [progress, setProgress] =  useState(0);
+    const [progress, setProgress] = useState(0);
 
     const FetchAllTabs = async () => {
         console.log("adwd");
@@ -63,6 +64,29 @@ const DataContext = (props) => {
         // setProgress(90);
         console.log(Tabsdata);
         setTabs(Tabsdata);
+        // setProgress(100);
+    }
+    const AskQuery = async (qry) => {
+        console.log("query");
+        // setProgress(30);
+        const url = "http://localhost:5005/webhooks/rest/webhook"
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials:"same-origin",
+            body: JSON.stringify({
+                "sender": "rasa",
+                "message": qry
+            })
+        })
+        // setProgress(70);
+        const res = await response.json();
+        // // setProgress(90);
+        console.log(res);
+        console.log(qry)
+        return res;
         // setProgress(100);
     }
     const CreateNote = async (title, description, tag) => {
@@ -106,7 +130,7 @@ const DataContext = (props) => {
             })
             let resjson = await response.json();
             await FetchAllTabs();
-            sts = {resjson, success:response.ok};
+            sts = { resjson, success: response.ok };
         } catch (error) {
             console.log(error);
         }
@@ -130,8 +154,8 @@ const DataContext = (props) => {
                 let newnote = Tabs.filter((Tabs) => { return Tabs._id !== note_id })
                 setTabs(newnote);
             }
-            
-            sts = {resjson, success:response.ok};
+
+            sts = { resjson, success: response.ok };
         } catch (error) {
             console.log(error);
         }
@@ -180,46 +204,46 @@ const DataContext = (props) => {
         setSelectedList(list);
     }
 
-    const SignUp = async (name, email, password)=>{
+    const SignUp = async (name, email, password) => {
         setProgress(30);
         let sts = false;
         const url = `${Host}/api/auth/create-user/`
         try {
-            
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({name, email, password })
+                body: JSON.stringify({ name, email, password })
             })
             setProgress(60);
             const resjson = await response.json();
             setProgress(80);
-            sts = {resjson, success:response.ok};
+            sts = { resjson, success: response.ok };
         } catch (error) {
             console.log(error);
         }
         setProgress(100);
         return sts;
     }
-    const Login = async (email, password)=>{
+    const Login = async (email, password) => {
         setProgress(30);
         let sts = false;
         const url = `${Host}/api/auth/login-user/`
         try {
-            
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({email, password })
+                body: JSON.stringify({ email, password })
             })
             setProgress(60);
             const resjson = await response.json();
             setProgress(80);
-            sts = {resjson, success:response.ok};
+            sts = { resjson, success: response.ok };
         } catch (error) {
             console.log(error);
         }
@@ -227,7 +251,7 @@ const DataContext = (props) => {
         return sts;
     }
     return (
-        <NewContext.Provider value={{ Tabs: Tabs, FetchTabs: FetchAllTabs, CreateNote: CreateNote, UpdateNote: UpdateNote, setSelectedTabs: setSelectedTabs, SelectedTabs: SelectedTabs, DeleteNote: DeleteNote, append: addSelected, delete: deleteSelected, MultiDelete: MultiDelete, deleteClear: deleteClear, SignUp : SignUp, Login:Login, progress:progress, setProgress:setProgress }}>
+        <NewContext.Provider value={{ Tabs: Tabs, FetchTabs: FetchAllTabs, CreateNote: CreateNote, UpdateNote: UpdateNote, setSelectedTabs: setSelectedTabs, SelectedTabs: SelectedTabs, DeleteNote: DeleteNote, append: addSelected, delete: deleteSelected, MultiDelete: MultiDelete, deleteClear: deleteClear, SignUp: SignUp, Login: Login, progress: progress, setProgress: setProgress, AskQuery: AskQuery }}>
             {props.children}
         </NewContext.Provider>
     )
