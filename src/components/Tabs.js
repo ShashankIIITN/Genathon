@@ -46,7 +46,6 @@ function Tabs(props) {
         let id = await Contexts.CreateTab("NewChat", [])
     }
 
-
     const LeftTabData = [
         {
 
