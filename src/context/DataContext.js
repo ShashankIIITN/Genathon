@@ -67,7 +67,7 @@ const DataContext = (props) => {
         // setProgress(100);
     }
     const AskQuery = async (qry) => {
-        console.log("query");
+        // console.log("query");
         // setProgress(30);
         const url = "http://192.168.137.74:5005/webhooks/rest/webhook"
         const response = await fetch(url, {
@@ -84,8 +84,8 @@ const DataContext = (props) => {
         // setProgress(70);
         const res = await response.json();
         // // setProgress(90);
-        console.log(res);
-        console.log(qry)
+        // console.log(res);
+        // console.log(qry)
         return res;
         // setProgress(100);
     }
@@ -117,6 +117,7 @@ const DataContext = (props) => {
     const UpdateTab = async (Tab, Content, tab_id) => {
         let sts = false;
         const url = `${Host}/api/Tabs/update-tab/${tab_id}`
+        console.log("my name is khan ")
 
         try {
 

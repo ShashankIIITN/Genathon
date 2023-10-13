@@ -5,7 +5,7 @@ import NewContext from '../context/NewContext'
 
 function TabContent(props) {
     const [curNoteData, setcurNoteData] = useState(null)
-    let id = null;
+    let id = 0;
     const Context = useContext(NewContext)
     const reff = useRef(null)
     const [chatData, setchatData] = useState([])
@@ -23,6 +23,7 @@ function TabContent(props) {
     }, [])
 
     const AskHandler = async (e) => {
+        id++;
         let ques = reff.current.value;
         console.log(ques)
 
@@ -47,14 +48,14 @@ function TabContent(props) {
             let chatList = chatData;
 
             await Context.UpdateTab("NewChat", chatList,  props.id)
-            console.log("my namr is lhia n")
+            console.log(props.id)
             // console.log(id)
 
 
 
             let dac = document.getElementsByClassName("chatMenu")
             dac[0].scrollTo({ left: 0, top: dac[0].scrollHeight, behavior: "smooth" });
-            console.log(dac[0].scrollHeight)
+            // console.log(dac[0].scrollHeight)
         }
 
     }
@@ -65,9 +66,9 @@ function TabContent(props) {
         <>
             <div className='chatMenu container w-75 '>
                 {
-                    chatData && chatData.map(e => {
+                    chatData && chatData.map((e,ind) => {
                         return (
-                            <div className='message-container' key={e.me + e.bot}>
+                            <div className='message-container' key={ind}>
                                 <div className='layout'>
                                     <div className='sender'>
                                         <img src={myImage} className='person' alt="My Image" />
@@ -76,15 +77,15 @@ function TabContent(props) {
                                     <div className='bott'>
                                         <img src={myImage2} className='person' alt="My Image2" />
                                         {typeof e.bot != "string" && e.bot.map(e => {
-                                            console.log("ai")
-                                            console.log(e)
+                                            // console.log("ai")
+                                            // console.log(e)
                                             if (e.text == null)
                                                 return <img src={e.image} className='respo text h5 w-25'></img>
                                             else return <p className='respo text h5'>{e.text}</p>
                                         })}
                                         {typeof e.bot === "string" &&
-                                            <p className='respo text h5'>{e.bot}</p>
-
+                                            <p className=' text h5'>{e.bot}</p> 
+                                            
                                         }
 
                                     </div>
@@ -103,8 +104,8 @@ function TabContent(props) {
                 <button className="btn btn-success" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
             </div> */}
             <div className="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
-                <input type="text" className="form-control transparent-input" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                <button className="btn btn-success transparent-button" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
+                <input type="text" className="form-control" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <button className="btn btn-success" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
             </div>
 
         </>

@@ -69,7 +69,7 @@ function Tabs(props) {
             <div className="tab-content d-flex" id="v-pills-tabContent">
                 {/* <div className="tab-pane fade  h-100 w-100 show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabIndex="0"><TabContent data = {[]}/></div> */}
                 {tabData && tabData.map((e, ind) => {
-                    return tabData && <div className={`tab-pane fade  h-100 w-100 `} id={`v-pills-${e.Tab.toLowerCase()}`} key={`v-pills-${e.Tab.toLowerCase()}`} role="tabpanel" aria-labelledby={`v-pills-${e.Tab.toLowerCase()}-tab`} tabIndex="0"><TabContent data={e.TabContent} /></div>
+                    return tabData && <div className={`tab-pane fade  h-100 w-100 `} id={`v-pills-${e.Tab.toLowerCase()}`} key={`v-pills-${e.Tab.toLowerCase()}`} role="tabpanel" aria-labelledby={`v-pills-${e.Tab.toLowerCase()}-tab`} tabIndex="0"><TabContent data={e.TabContent} id = {e._id}/></div>
                 })}
 
             </div>
