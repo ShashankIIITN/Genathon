@@ -58,7 +58,7 @@ function TabContent(props) {
                                 <div className='layout'>
                                     <div className='sender'>
                                         <img src={myImage} className='person' alt="My Image" />
-                                        <p className='mee text h4'>{e.me}</p>
+                                        <p className='mee text h5'>{e.me}</p>
                                     </div>
                                     <div className='bott'>
                                         <img src={myImage2} className='person' alt="My Image2" />
@@ -66,14 +66,14 @@ function TabContent(props) {
                                             console.log("ai")
                                             console.log(e)
                                             if (e.text == null)
-                                                return <img src={e.image} className=' text h4 w-25'></img>
-                                            else return <p className=' text h4'>{e.text}</p>
+                                                return <img src={e.image} className='respo text h5 w-25'></img>
+                                            else return <p className='respo text h5'>{e.text}</p>
                                         })}
                                         {typeof e.bot === "string" &&
-                                            <p className=' text h4'>{e.bot}</p> 
-                                            
+                                            <p className='respo text h5'>{e.bot}</p>
+
                                         }
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -85,10 +85,15 @@ function TabContent(props) {
                 <input type="text" className="form-control asking" placeholder="Ask about something" aria-label="Recipient's username" aria-describedby="button-addon2" />
                 <button type="button" class="btn btn-success" id="button-addon2">Ask</button>
             </div> */}
-            <div class="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
+            {/* <div class="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
                 <input type="text" class="form-control" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
                 <button class="btn btn-success" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
+            </div> */}
+            <div class="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
+                <input type="text" class="form-control transparent-input" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <button className="btn btn-success transparent-button" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
             </div>
+
         </>
     )
 }

@@ -18,7 +18,7 @@ body, html{
 }
 
 .tab-pane{
-  background-color: #818181;
+  background-color: #222327;
 }
 .tabbar{
   color: white;
@@ -56,7 +56,10 @@ body, html{
 .chatMenu {
   margin-top: 10px;
   border-radius: 15px;
-  background-color: #222327;
+  background-color: #131314;
+}
+.chatMenu::-webkit-scrollbar {
+  width: 20px;
 }
 
 .layout{
@@ -90,15 +93,44 @@ body, html{
   float: right;
   padding-right: 20px;
 }
+.icon3{
+  float: left;
+  padding-right: 10px;
+}
 .sender{
   display:flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
+.transparent-input {
+  background-color: rgba(255, 255, 255, 0.2); /* Adjust the last value (alpha) to control transparency */
+  border: none; /* Remove the border if needed */
+  border-radius: 15px;
+}
+
+.transparent-button {
+  background-color: #0D6EFD; /* Adjust the last value (alpha) to control button transparency */
+  border: none; /* Remove the button border if needed */
+  border-radius: 15px;
+}
+
+/* You can also style other properties like text color, padding, etc. to match your design */
+
+.aboutus{
+  text-align: center;
+  margin-top: 200px;
+}
+.aboutus h1,
+.aboutus h2,
+.aboutus .lists li {
+  text-decoration: none;
+}
+
 .respo{
   padding-left: 20px;
   padding-top: 5px;
+  margin-right: 100px;
 }
 .bott{
   display:flex;
@@ -152,6 +184,9 @@ body, html{
   width: 25%;
 }
 
+.nav-link{
+  color: white;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -164,7 +199,7 @@ body, html{
 }
 
 .App-link {
-  color: #61dafb;
+  color: #f9fafa;
 }
 
 @keyframes App-logo-spin {

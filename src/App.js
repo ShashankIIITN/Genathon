@@ -6,6 +6,7 @@ import NewContext from './context/NewContext';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Auth from './components/Login';
 import Signup from './components/SignUp';
+import About from './components/About';
 
 
 const demoChatData =
@@ -83,6 +84,7 @@ function App() {
       <Route path='/' element={Contexts.Tabs &&  <Tabs ChatData = {ChatData}/>}/>
       <Route path='/Signup' element={<Signup showAlert={showAlert} />} />
       <Route path='/Login' element={<Auth showAlert={showAlert} />} />
+      <Route path='/About' element={<About showAlert={showAlert} />} />
       </Routes>
     </>
   );
