@@ -57,12 +57,16 @@ function TabContent(props) {
                                     </div>
                                     <div className='bott'>
                                         <img src={myImage2} className='person' alt="My Image2" />
-                                        {typeof e.bot == "Array" && e.bot.map(e=>{
-                                            if(e.text == null)
-                                                return <img src={e.image} className=' text-secondary h4 w-25'>{e.bot}</img>
-                                            else return <p className=' text-secondary h4'>{e.bot}</p>
+                                        {typeof e.bot != "string" && e.bot.map(e => {
+                                            console.log("ai")
+                                            console.log(e)
+                                            if (e.text == null)
+                                                return <img src={e.image} className=' text-secondary h4 w-25'></img>
+                                            else return <p className=' text-secondary h4'>{e.text}</p>
                                         })}
-                                        {console.log(e.bot)}
+                                        {typeof e.bot === "string" &&
+                                            <p className=' text-secondary h4'>{e.bot}</p>
+                                        }
                                     </div>
                                 </div>
                             </div>
