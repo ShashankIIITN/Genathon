@@ -28,7 +28,7 @@ function Navbar(props) {
                 <div className="d-flex">
                     {!localStorage.getItem("Token") && <Link className="btn btn-outline-success me-1" type="button"  to="/Login">Login</Link>}
                     {!localStorage.getItem("Token") && <Link className="btn btn-outline-success ms-1" type="button" to="/Signup">Signup</Link>}
-                    {localStorage.getItem("Token") && <button className="btn btn-outline-success ms-1" type="button" onClick={onLogout}>Logout</button>}    
+                    {localStorage.getItem("Token") && <button className="btn btn-danger ms-1" type="button" onClick={onLogout}>Logout</button>}    
                 </div>
             </div>
         </div>

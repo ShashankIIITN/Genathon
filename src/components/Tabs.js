@@ -50,7 +50,7 @@ function Tabs(props) {
     ]
 
     return (
-        <div className="d-flex align-items-start w-100 h-100">
+        <div className="tabbar d-flex align-items-start w-100 h-100">
             <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <p className="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</p>
                 {tabData && tabData.map((e,ind) => {

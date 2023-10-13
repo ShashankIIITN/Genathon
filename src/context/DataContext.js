@@ -69,7 +69,7 @@ const DataContext = (props) => {
     const AskQuery = async (qry) => {
         console.log("query");
         // setProgress(30);
-        const url = "http://192.168.105.127:5005/webhooks/rest/webhook"
+        const url = "http://192.168.137.254:5005/webhooks/rest/webhook"
         const response = await fetch(url, {
             method: 'POST',
             headers: {

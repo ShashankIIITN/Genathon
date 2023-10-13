@@ -13,10 +13,39 @@ body, html{
   padding: 2px;
 }
 
+.navbar{
+  background-color: #131314;
+}
+
 .tab-pane{
   background-color: #818181;
 }
+.tabbar{
+  color: white;
+  background-color: #19191a;
+}
 
+.navbar{
+  background: black;
+}
+
+.navbar .navbar-brand{
+  color: white;
+}
+/* Change the text color for links in the navbar */
+.navbar .navbar-nav .nav-link {
+  color: white;
+}
+
+/* Change the text color for buttons in the navbar */
+.navbar .btn {
+  color: white;
+}
+
+/* If you want to change the toggler icon color, you can do so like this */
+.navbar .navbar-toggler-icon {
+  color: white;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -24,7 +53,11 @@ body, html{
 .chatMenu {
   background-color: rgb(193, 198, 198);
 }
-
+.chatMenu {
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: #222327;
+}
 
 .layout{
   display:flex;
@@ -40,7 +73,6 @@ body, html{
   padding-right: 10px;
   padding-bottom: 2px;
   margin: 0px 20px 0px 300px;
-  background: rgb(87, 167, 241);
   width: fit-content;
   margin-top: 10px;
   
@@ -48,6 +80,7 @@ body, html{
 .applogo{
   width: 40px;
   padding-right: 10px;
+  border-radius: 50%;
 }
 .icon{
   float: right;
@@ -63,6 +96,10 @@ body, html{
   align-items: flex-end;
 }
 
+.respo{
+  padding-left: 20px;
+  padding-top: 5px;
+}
 .bott{
   display:flex;
   flex-direction: column;
@@ -90,8 +127,8 @@ body, html{
   border-radius: 5px;
   padding-right: 10px;
   padding-bottom: 2px;
-  background: rgb(69, 250, 93);
   width: fit-content;
+  color: white;
   margin-top: 10px;
 }
 .chatMenu{
