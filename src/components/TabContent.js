@@ -10,6 +10,9 @@ function TabContent(props) {
     const [query, setquery] = useState("")
     useEffect(() => {
         setchatData(props.data)
+        let dac = document.getElementsByClassName("chatMenu")
+        dac[0].scrollTo({ left: 0, top: dac[0].scrollHeight, behavior: "smooth" });
+        console.log(dac)
 
     }, [])
 
@@ -36,7 +39,9 @@ function TabContent(props) {
 
 
             setchatData([...chatData, qry])
-            console.log(chatData)
+            let dac = document.getElementsByClassName("chatMenu")
+            dac[0].scrollTo({ left: 0, top: dac[0].scrollHeight, behavior: "smooth" });
+            console.log(dac[0].scrollHeight)
         }
 
     }
@@ -65,8 +70,10 @@ function TabContent(props) {
                                             else return <p className=' text-secondary h4'>{e.text}</p>
                                         })}
                                         {typeof e.bot === "string" &&
-                                            <p className=' text-secondary h4'>{e.bot}</p>
+                                            <p className=' text-secondary h4'>{e.bot}</p> 
+                                            
                                         }
+                                        
                                     </div>
                                 </div>
                             </div>

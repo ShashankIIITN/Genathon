@@ -1,4 +1,5 @@
 import React from 'react'
+import myImage from '../images/bott.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 
 function Navbar(props) {
@@ -10,7 +11,8 @@ function Navbar(props) {
     return (
         <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-            <Link className="navbar-brand" to="/">{props.data.name}</Link>
+            <Link className="navbar-brand" to="/"><img src={myImage} className='applogo'  alt='my Image'/><b>{props.data.name}</b></Link>
+            {/* <img src={myImage} className='applogo'  alt='my Image'/><b>{props.data.name}</b> */}
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

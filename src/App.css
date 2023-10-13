@@ -45,7 +45,18 @@ body, html{
   margin-top: 10px;
   
 }
-
+.applogo{
+  width: 40px;
+  padding-right: 10px;
+}
+.icon{
+  float: right;
+   /* position: absolute; */
+}
+.icon2{
+  float: right;
+  padding-right: 20px;
+}
 .sender{
   display:flex;
   flex-direction: column;
