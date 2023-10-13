@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import './App.css'
 import Navbar from './components/Navbar.js';
 import Tabs from './components/Tabs';
+import Modal from './components/Modal.js';
 import NewContext from './context/NewContext';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Auth from './components/Login';

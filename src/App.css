@@ -212,6 +212,34 @@ body, html{
   color: #f9fafa;
 }
 
+.model {
+  background-color: #848585;
+  padding: 0px;
+}
+
+.buttonmodal{
+  padding-bottom: 10px;
+}
+.rename{
+  background-color: rgba(255, 255, 255, 0.2); /* Adjust the last value (alpha) to control transparency */
+  border: none; /* Remove the border if needed */
+  border-radius: 15px;
+}
+
+.navmodal .modal-title{
+  float: left;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.navmodal button{
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.last .btn{
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
