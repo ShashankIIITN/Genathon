@@ -89,7 +89,7 @@ const DataContext = (props) => {
         return res;
         // setProgress(100);
     }
-    const CreateNote = async (title, description, tag) => {
+    const CreateTab = async (Tab, Content) => {
         let sts = false;
         const url = `${Host}/api/Tabs/create-note`
         try {
@@ -100,7 +100,7 @@ const DataContext = (props) => {
                     "Content-Type": "application/json",
                     "auth_token": localStorage.getItem("Token")
                 },
-                body: JSON.stringify({ title, description, tag })
+                body: JSON.stringify({ Tab, Content })
             })
             const resjson = await response.json();
             let newnote = Tabs.concat(resjson);
@@ -108,15 +108,15 @@ const DataContext = (props) => {
 
                 setTabs(newnote);
             }
-            sts = response.ok;
+            sts = {Tabdata:resjson,stats:response.ok};
         } catch (error) {
             console.log(error);
         }
         return sts;
     }
-    const UpdateNote = async (title, description, tag, note_id) => {
+    const UpdateTab = async (Tab, Content, tab_id) => {
         let sts = false;
-        const url = `${Host}/api/Tabs/update-note/${note_id}`
+        const url = `${Host}/api/Tabs/update-tab/${tab_id}`
 
         try {
 
@@ -126,19 +126,23 @@ const DataContext = (props) => {
                     "Content-Type": "application/json",
                     "auth_token": localStorage.getItem("Token")
                 },
-                body: JSON.stringify({ title, description, tag })
+                body: JSON.stringify({ Tab:Tab, Content:Content })
             })
             let resjson = await response.json();
             await FetchAllTabs();
+            console.log("updating")
             sts = { resjson, success: response.ok };
         } catch (error) {
             console.log(error);
         }
-        return sts.success;
+        return sts;
+
+        console.log(Tab)
+        console.log(Content)
     }
-    const DeleteNote = async (note_id) => {
+    const DeleteTab = async (tab_id) => {
         let sts = false;
-        const url = `${Host}/api/Tabs/delete-note/${note_id}`
+        const url = `${Host}/api/Tabs/delete-Tab/${tab_id}`
 
         try {
 
@@ -151,7 +155,7 @@ const DataContext = (props) => {
             })
             let resjson = await response.json();
             if (response.ok) {
-                let newnote = Tabs.filter((Tabs) => { return Tabs._id !== note_id })
+                let newnote = Tabs.filter((Tabs) => { return Tabs._id !== tab_id })
                 setTabs(newnote);
             }
 
@@ -165,7 +169,7 @@ const DataContext = (props) => {
         setProgress(30);
         for (let index = 0; index < SelectedList.length; index++) {
             const element = SelectedList[index];
-            await DeleteNote(element);
+            await DeleteTab(element);
         }
         setProgress(60);
         setSelectedList([]);
@@ -251,7 +255,7 @@ const DataContext = (props) => {
         return sts;
     }
     return (
-        <NewContext.Provider value={{ Tabs: Tabs, FetchTabs: FetchAllTabs, CreateNote: CreateNote, UpdateNote: UpdateNote, setSelectedTabs: setSelectedTabs, SelectedTabs: SelectedTabs, DeleteNote: DeleteNote, append: addSelected, delete: deleteSelected, MultiDelete: MultiDelete, deleteClear: deleteClear, SignUp: SignUp, Login: Login, progress: progress, setProgress: setProgress, AskQuery: AskQuery }}>
+        <NewContext.Provider value={{ Tabs: Tabs, FetchTabs: FetchAllTabs, CreateTab: CreateTab, UpdateTab: UpdateTab, setSelectedTabs: setSelectedTabs, SelectedTabs: SelectedTabs, DeleteTab: DeleteTab, append: addSelected, delete: deleteSelected, MultiDelete: MultiDelete, deleteClear: deleteClear, SignUp: SignUp, Login: Login, progress: progress, setProgress: setProgress, AskQuery: AskQuery }}>
             {props.children}
         </NewContext.Provider>
     )

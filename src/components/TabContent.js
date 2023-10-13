@@ -4,10 +4,16 @@ import myImage2 from '../images/bott.jpg'
 import NewContext from '../context/NewContext'
 
 function TabContent(props) {
+    const [curNoteData, setcurNoteData] = useState(null)
+    let id = null;
     const Context = useContext(NewContext)
     const reff = useRef(null)
     const [chatData, setchatData] = useState([])
+
     const [query, setquery] = useState("")
+    const setTabnameConent = () => {
+
+    }
     useEffect(() => {
         setchatData(props.data)
         let dac = document.getElementsByClassName("chatMenu")
@@ -19,6 +25,7 @@ function TabContent(props) {
     const AskHandler = async (e) => {
         let ques = reff.current.value;
         console.log(ques)
+
         if (ques.trim() === "") {
             alert("pls ask something!");
         } else {
@@ -35,10 +42,16 @@ function TabContent(props) {
             qry.bot = res
 
             // chatlist.push(qry)
-
-
-
             setchatData([...chatData, qry])
+
+            let chatList = chatData;
+
+            await Context.UpdateTab("NewChat", chatList,  props.id)
+            console.log("my namr is lhia n")
+            // console.log(id)
+
+
+
             let dac = document.getElementsByClassName("chatMenu")
             dac[0].scrollTo({ left: 0, top: dac[0].scrollHeight, behavior: "smooth" });
             console.log(dac[0].scrollHeight)
@@ -54,7 +67,7 @@ function TabContent(props) {
                 {
                     chatData && chatData.map(e => {
                         return (
-                            <div className='message-container' >
+                            <div className='message-container' key={e.me + e.bot}>
                                 <div className='layout'>
                                     <div className='sender'>
                                         <img src={myImage} className='person' alt="My Image" />
@@ -83,14 +96,14 @@ function TabContent(props) {
             </div>
             {/* <div className="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
                 <input type="text" className="form-control asking" placeholder="Ask about something" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                <button type="button" class="btn btn-success" id="button-addon2">Ask</button>
+                <button type="button" className="btn btn-success" id="button-addon2">Ask</button>
             </div> */}
-            {/* <div class="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
-                <input type="text" class="form-control" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                <button class="btn btn-success" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
+            {/* <div className="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
+                <input type="text" className="form-control" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <button className="btn btn-success" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
             </div> */}
-            <div class="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
-                <input type="text" class="form-control transparent-input" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
+            <div className="asking position-absolute bottom-0 w-75 align-self-center input-group mb-3">
+                <input type="text" className="form-control transparent-input" ref={reff} placeholder="Ask me Anything" aria-label="Recipient's username" aria-describedby="button-addon2" />
                 <button className="btn btn-success transparent-button" type="button" id="button-addon2" onClick={AskHandler}>Ask</button>
             </div>
 
